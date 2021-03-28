@@ -16,7 +16,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // connect to database
-mongoose.connect(proccess.env.DATABASE_URL + proccess.env.DATABASE_NAME, {useNewUrlParser:true, useUnifiedTopology:true});
+mongoose.connect(proccess.env.DATABASE_URL + proccess.env.DATABASE_NAME, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// config routes
+const Routes = require('./src/routes')
+app.use(Routes)
 
 // start server
 server.listen(proccess.env.PORT, proccess.env.HOST, () => {
