@@ -1,8 +1,10 @@
-const express = require('express')
-const Router = express.Router()
+const express = require("express");
+const Router = express.Router();
 
-Router.get('/', (req,res)=>{
-    res.send('test')
-})
+// config admin routes
+const AdminRouter = require("./admin");
+Router.use("/admin", AdminRouter);
+const AppRouter = require("./app");
+Router.use("/app", AppRouter);
 
-module.exports = Router
+module.exports = Router;
